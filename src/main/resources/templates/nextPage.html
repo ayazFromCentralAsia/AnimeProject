@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Searched List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="anime-list">
+    <div class="anime" th:each="SaverObject : ${searchResult}">
+        <a th:href="@{/anime/details/{id}(id=${SaverObject.id})}">
+            <img th:src="@{${SaverObject.imageUrl}}" alt="Anime Image">
+        </a>
+        <div class="anime-info">
+            <h3 th:text="${SaverObject.title}">
+                <a th:href="@{/anime/details/{id}(id=${SaverObject.id})}">Anime Name</a>
+            </h3>
+            <p>Episodes: <span th:text="${SaverObject.episodes}">12</span></p>
+            <p>Type: <span th:text="${SaverObject.type}">TV</span></p>
+        </div>
+    </div>
+</div>
+<div class="return-button">
+    <a th:href="@{/page}" class="btn">Вернуться</a>
+</div>
+</body>
+</html>

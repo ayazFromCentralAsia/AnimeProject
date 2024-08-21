@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Details</title>
+    <link rel="stylesheet" href="../static/detailStyle.css">
+</head>
+<body>
+
+<div class="container anime-details-container">
+    <h1 th:text="${SaverObject.title}">Anime Title</h1>
+    <img th:src="@{${SaverObject.imageUrl}}" alt="Anime Image">
+    <p>Episodes: <span th:text="${SaverObject.episodes}">12</span></p>
+    <p>Type: <span th:text="${SaverObject.type}">TV</span></p>
+    <p>Rank: <span th:text="${SaverObject.rank}">Rank</span></p>
+    <p>Popularity: <span th:text="${SaverObject.popularity}">Popularity</span></p>
+    <p class="trailer-link">
+        <a th:href="${SaverObject.trailer}" target="_blank">Watch Trailer</a>
+    </p>
+
+    <div class="video-player" th:if="${SaverObject.trailer != null}">
+        <iframe th:src="@{${SaverObject.trailer}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+</body>
+</html>
